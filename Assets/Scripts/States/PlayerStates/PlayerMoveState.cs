@@ -15,8 +15,6 @@ public class PlayerMoveState : States
     private Vector3 targetPosition;
     private NavMeshAgent navMeshAgent;
 
-
-    
     public PlayerMoveState(GameObject stateGameObject) : base(stateGameObject)
     {
     }
@@ -38,7 +36,6 @@ public class PlayerMoveState : States
         rigidBody = stateGameObject.GetComponent<Rigidbody>();
         rotateCharacter = stateGameObject.GetComponent<RotateCharacter>();
         navMeshAgent = stateGameObject.GetComponent<NavMeshAgent>();
-        GetMovingPoint();  
     }
 
     public new void OnEnterState()
@@ -59,7 +56,7 @@ public class PlayerMoveState : States
          if (PlayerInputController.Instance.IsMoving())
         {
             GetMovingPoint();
-            navMeshAgent.velocity = Vector3.zero;
+             navMeshAgent.velocity = Vector3.zero;         
         }
         
         MovePlayer();
