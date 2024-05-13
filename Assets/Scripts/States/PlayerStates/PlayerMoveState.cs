@@ -14,6 +14,10 @@ public class PlayerMoveState : States
     private RotateCharacter rotateCharacter;
     private Vector3 targetPosition;
     public float playerSpeed;
+
+    private NavMeshAgent navMeshAgent;
+
+
     
     public PlayerMoveState(GameObject stateGameObject) : base(stateGameObject)
     {
@@ -35,10 +39,8 @@ public class PlayerMoveState : States
     {
         rigidBody = stateGameObject.GetComponent<Rigidbody>();
         rotateCharacter = stateGameObject.GetComponent<RotateCharacter>();
-        GetMovingPoint();
-        stateGameObject.transform.rotation = rotateCharacter.RotateTowardsPoint(targetPosition, stateGameObject.transform.position);
-        
-       
+        navMeshAgent = stateGameObject.GetComponent<NavMeshAgent>();
+        GetMovingPoint();  
     }
 
     public new void OnEnterState()
@@ -50,6 +52,7 @@ public class PlayerMoveState : States
     private void GetMovingPoint(){
         targetPosition = PlayerReferences.instance.GetMouseTargetDir();
         targetPosition.y = stateGameObject.transform.position.y;
+        stateGameObject.transform.rotation = rotateCharacter.RotateTowardsPoint(targetPosition, stateGameObject.transform.position);
     }
 
    
@@ -60,8 +63,7 @@ public class PlayerMoveState : States
          if (PlayerInputController.Instance.IsMoving())
         {
             GetMovingPoint();
-            stateGameObject.transform.rotation = rotateCharacter.RotateTowardsPoint(targetPosition, stateGameObject.transform.position);
-            rigidBody.velocity = Vector3.zero;
+            navMeshAgent.velocity = Vector3.zero;
         }
         
         MovePlayer();
@@ -70,24 +72,42 @@ public class PlayerMoveState : States
 
     private void MovePlayer()
     {
-        Vector3 currentPosition = stateGameObject.transform.position;
-        Vector3 moveDirection = (targetPosition - currentPosition).normalized;
+        // Vector3 currentPosition = stateGameObject.transform.position;
+        // Vector3 moveDirection = (targetPosition - currentPosition).normalized;
 
-        // Si ya estamos cerca del objetivo, detener el movimiento
-        if (Vector3.Distance(currentPosition, targetPosition) < 0.1f)
+        // // Si ya estamos cerca del objetivo, detener el movimiento
+        // if (Vector3.Distance(currentPosition, targetPosition) < 0.1f)
+        // {
+        //     rigidBody.velocity = Vector3.zero;
+        //     return;
+        // }
+
+        // // Calcular la velocidad deseada
+        // Vector3 desiredVelocity = moveDirection * playerSpeed;
+
+        // // Calcular la fuerza necesaria para alcanzar la velocidad deseada
+        // Vector3 force = (desiredVelocity - rigidBody.velocity) * rigidBody.mass / Time.fixedDeltaTime;
+
+        // // Aplicar la fuerza al Rigidbody
+        // rigidBody.AddForce(force);
+
+        if (NavMesh.SamplePosition(targetPosition, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
         {
-            rigidBody.velocity = Vector3.zero;
-            return;
+            navMeshAgent.SetDestination(hit.position);
         }
-
-        // Calcular la velocidad deseada
-        Vector3 desiredVelocity = moveDirection * playerSpeed;
-
-        // Calcular la fuerza necesaria para alcanzar la velocidad deseada
-        Vector3 force = (desiredVelocity - rigidBody.velocity) * rigidBody.mass / Time.fixedDeltaTime;
-
-        // Aplicar la fuerza al Rigidbody
-        rigidBody.AddForce(force);
+        else
+        {
+            // La posición de destino está fuera del NavMesh, busca la posición más cercana
+            if (NavMesh.FindClosestEdge(targetPosition, out hit, NavMesh.AllAreas))
+            {
+                navMeshAgent.SetDestination(hit.position);
+                Debug.LogWarning("La posición de destino está fuera del NavMesh. Moviendo al punto más cercano en la NavMesh.");
+            }
+            else
+            {
+                Debug.LogWarning("No se pudo encontrar un punto cercano en la NavMesh. No se pudo mover el NavMeshAgent.");
+            }
+        }
     }
 
     public override void Update()
