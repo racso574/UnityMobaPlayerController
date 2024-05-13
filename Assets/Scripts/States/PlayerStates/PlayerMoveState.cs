@@ -13,8 +13,6 @@ public class PlayerMoveState : States
     private Rigidbody rigidBody;
     private RotateCharacter rotateCharacter;
     private Vector3 targetPosition;
-    public float playerSpeed;
-
     private NavMeshAgent navMeshAgent;
 
 
@@ -55,8 +53,6 @@ public class PlayerMoveState : States
         stateGameObject.transform.rotation = rotateCharacter.RotateTowardsPoint(targetPosition, stateGameObject.transform.position);
     }
 
-   
-    
 
     public override void FixedUpdate()
     {
@@ -72,36 +68,19 @@ public class PlayerMoveState : States
 
     private void MovePlayer()
     {
-        // Vector3 currentPosition = stateGameObject.transform.position;
-        // Vector3 moveDirection = (targetPosition - currentPosition).normalized;
-
-        // // Si ya estamos cerca del objetivo, detener el movimiento
-        // if (Vector3.Distance(currentPosition, targetPosition) < 0.1f)
-        // {
-        //     rigidBody.velocity = Vector3.zero;
-        //     return;
-        // }
-
-        // // Calcular la velocidad deseada
-        // Vector3 desiredVelocity = moveDirection * playerSpeed;
-
-        // // Calcular la fuerza necesaria para alcanzar la velocidad deseada
-        // Vector3 force = (desiredVelocity - rigidBody.velocity) * rigidBody.mass / Time.fixedDeltaTime;
-
-        // // Aplicar la fuerza al Rigidbody
-        // rigidBody.AddForce(force);
-
-        if (NavMesh.SamplePosition(targetPosition, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
+        NavMeshHit hit;
+        // Try to sample the position directly with a small distance
+        if (NavMesh.SamplePosition(targetPosition, out hit, 1.0f, NavMesh.AllAreas))
         {
             navMeshAgent.SetDestination(hit.position);
         }
         else
         {
-            // La posición de destino está fuera del NavMesh, busca la posición más cercana
-            if (NavMesh.FindClosestEdge(targetPosition, out hit, NavMesh.AllAreas))
+            // If the initial sample fails, try with a larger distance
+            if (NavMesh.SamplePosition(targetPosition, out hit, 10.0f, NavMesh.AllAreas))
             {
                 navMeshAgent.SetDestination(hit.position);
-                Debug.LogWarning("La posición de destino está fuera del NavMesh. Moviendo al punto más cercano en la NavMesh.");
+                Debug.LogWarning("La posición de destino estaba fuera del NavMesh. Moviendo al punto más cercano en la NavMesh.");
             }
             else
             {
@@ -109,6 +88,7 @@ public class PlayerMoveState : States
             }
         }
     }
+
 
     public override void Update()
     {
