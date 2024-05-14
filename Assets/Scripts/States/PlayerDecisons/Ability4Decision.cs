@@ -10,6 +10,7 @@ public class Ability4Decision : Decision
         bool aux = false;
         if (PlayerInputController.Instance.IsUsingAbility4() && PlayerTimers.Instance.abilityTimers[4] > PlayerTimers.Instance.abilityCD[4])
         {
+            PlayerInputController.Instance.Ability4Used();
             aux = true;
         }
         return aux;

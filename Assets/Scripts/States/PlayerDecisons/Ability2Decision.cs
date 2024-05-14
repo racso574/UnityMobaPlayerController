@@ -10,6 +10,7 @@ public class Ability2Decision : Decision
         bool aux = false;
         if (PlayerInputController.Instance.IsUsingAbility2() && PlayerTimers.Instance.abilityTimers[2] > PlayerTimers.Instance.abilityCD[2])
         {
+            PlayerInputController.Instance.Ability2Used();
             aux = true;
         }
         return aux;

@@ -699,9 +699,10 @@ MonoBehaviour:
   abilityCD:
   - 0
   - 1
-  - 2
-  - 3
-  - 4
+  - 1
+  - 1
+  - 1
+  abilityTimers: []
 --- !u!1 &577197195
 GameObject:
   m_ObjectHideFlags: 0

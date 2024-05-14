@@ -10,6 +10,7 @@ public class Ability3Decision : Decision
         bool aux = false;
         if (PlayerInputController.Instance.IsUsingAbility3() && PlayerTimers.Instance.abilityTimers[3] > PlayerTimers.Instance.abilityCD[3])
         {
+            PlayerInputController.Instance.Ability3Used();
             aux = true;
         }
         return aux;
