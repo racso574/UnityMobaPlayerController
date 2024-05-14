@@ -27,4 +27,4 @@ MonoBehaviour:
     onDecisionTrueExitState: {fileID: 11400000, guid: ab5636ddf3aea534e8de3f641ed93043, type: 2}
     onDecisionFalseExitState: {fileID: 11400000, guid: d11d68ce8ccf2f549b7b40bd9f32b47b, type: 2}
   abilityListObj: {fileID: 11400000, guid: 2e2a81e2fc15bbe478c0caa04979619b, type: 2}
-  usingAbilityNumber: 0
+  usingAbilityNumber: 1
