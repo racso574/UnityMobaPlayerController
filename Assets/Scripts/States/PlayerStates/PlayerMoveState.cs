@@ -64,13 +64,13 @@ public class PlayerMoveState : States
     }
 
     private void AdjustAgentVelocity()
-{
-    Vector3 direction = (targetPosition - stateGameObject.transform.position).normalized;
-    float currentSpeed = navMeshAgent.velocity.magnitude;
+    {
+        Vector3 direction = (targetPosition - stateGameObject.transform.position).normalized;
+        float currentSpeed = navMeshAgent.velocity.magnitude;
 
-    // Ajusta la velocidad del agente para moverse en la nueva dirección sin detenerse completamente
-    navMeshAgent.velocity = direction * currentSpeed;
-}
+        // Ajusta la velocidad del agente para moverse en la nueva dirección sin detenerse completamente
+        navMeshAgent.velocity = direction * currentSpeed;
+    }
 
     private void MovePlayer()
     {

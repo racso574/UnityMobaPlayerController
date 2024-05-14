@@ -6,21 +6,27 @@ public class PlayerTimers : MonoBehaviour
 {
     [Header("PlayerTimers")]
     static public PlayerTimers Instance;
-    public float playerBasicAttackTimer;
-    public float playerBasicAttackCD;
-    public float rollTimer;
-    public float rollCD;
-
-    public float[] abilityTimers;
-    [SerializeField] public float[] abilityCD;
-
-    private void Start()
+    public float[] abilityCD;
+    private float[] abilityTimers;
+    
+    private void Awake()
     {
-        abilityTimers = new float[4];
         if (Instance == null)
         {
             Instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        // Inicializa abilityTimers con la misma longitud que abilityCD
+        abilityTimers = new float[abilityCD.Length];
+
+        // Llena abilityTimers con los valores de abilityCD
         for (int i = 0; i < abilityCD.Length; i++)
         {
             abilityTimers[i] = abilityCD[i];
@@ -29,10 +35,10 @@ public class PlayerTimers : MonoBehaviour
 
     private void Update()
     {
-
-        abilityTimers[0] += Time.deltaTime;
-        abilityTimers[1] += Time.deltaTime;
-        playerBasicAttackTimer += Time.deltaTime;
-        rollTimer += Time.deltaTime;
+        for (int i = 0; i < abilityTimers.Length; i++)
+        {
+            abilityTimers[i] += Time.deltaTime;
+        }
     }
 }
+

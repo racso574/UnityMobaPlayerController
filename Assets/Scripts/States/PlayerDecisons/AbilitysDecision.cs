@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PlayerDecisions/Ability1Decision")]
-public class Ability1Decision : Decision
+[CreateAssetMenu(menuName = "PlayerDecisions/AbilitysDecision")]
+public class AbilitysDecision : Decision
 {
+    private float abilityNumber
     public override bool Decide(StateMachine stateMachine)
     {
         bool aux = false;
