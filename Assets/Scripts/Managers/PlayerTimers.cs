@@ -7,7 +7,7 @@ public class PlayerTimers : MonoBehaviour
     [Header("PlayerTimers")]
     static public PlayerTimers Instance;
     public float[] abilityCD;
-    private float[] abilityTimers;
+    public float[] abilityTimers;
     
     private void Awake()
     {

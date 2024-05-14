@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PlayerDecisions/AbilitysDecision")]
-public class AbilitysDecision : Decision
+[CreateAssetMenu(menuName = "PlayerDecisions/Ability1Decision")]
+public class Ability1Decision : Decision
 {
-    private float abilityNumber
     public override bool Decide(StateMachine stateMachine)
     {
         bool aux = false;
-        if (PlayerInputController.Instance.IsUsingAbility1())
+        if (PlayerInputController.Instance.IsUsingAbility1() && PlayerTimers.Instance.abilityTimers[1] > PlayerTimers.Instance.abilityCD[1])
         {
                 aux = true;
         }
