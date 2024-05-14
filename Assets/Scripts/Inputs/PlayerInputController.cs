@@ -42,14 +42,11 @@ public class PlayerInputController : MonoBehaviour
 
     public void OnAbility1(InputValue inputValue)
     {
-        if (!inputValue.isPressed)
-        {
-            isUsingAbility1 = false;
-        }
-        else
-        {
             isUsingAbility1 = true;
-        }
+    }
+    public void Ability1Used()
+    {
+        isUsingAbility1 = false;
     }
     public bool IsUsingAbility1()
     {
@@ -58,14 +55,11 @@ public class PlayerInputController : MonoBehaviour
 
     public void OnAbility2(InputValue inputValue)
     {
-        if (!inputValue.isPressed)
-        {
-            isUsingAbility2 = false;
-        }
-        else
-        {
             isUsingAbility2 = true;
-        }
+    }
+    public void Ability2Used()
+    {
+        isUsingAbility2 = false;
     }
     public bool IsUsingAbility2()
     {
@@ -73,29 +67,24 @@ public class PlayerInputController : MonoBehaviour
     }
     public void OnAbility3(InputValue inputValue)
     {
-        if (!inputValue.isPressed)
-        {
-            isUsingAbility3 = false;
-        }
-        else
-        {
             isUsingAbility3 = true;
-        }
     }
+    public void Ability3Used()
+    {
+        isUsingAbility3 = false;
+    }
+
     public bool IsUsingAbility3()
     {
         return isUsingAbility3;
     }
     public void OnAbility4(InputValue inputValue)
     {
-        if (!inputValue.isPressed)
-        {
-            isUsingAbility4 = false;
-        }
-        else
-        {
-            isUsingAbility4 = true;
-        }
+            isUsingAbility4 = true;   
+    }
+    public void Ability4Used()
+    {
+        isUsingAbility4 = false;
     }
     public bool IsUsingAbility4()
     {

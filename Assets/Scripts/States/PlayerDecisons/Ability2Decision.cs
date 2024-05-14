@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ability2Decision : MonoBehaviour
+[CreateAssetMenu(menuName = "PlayerDecisions/Ability2Decision")]
+public class Ability2Decision : Decision
 {
-    // Start is called before the first frame update
-    void Start()
+    public override bool Decide(StateMachine stateMachine)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        bool aux = false;
+        if (PlayerInputController.Instance.IsUsingAbility2() && PlayerTimers.Instance.abilityTimers[2] > PlayerTimers.Instance.abilityCD[2])
+        {
+            aux = true;
+        }
+        return aux;
     }
 }

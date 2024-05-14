@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: Ability State Slot 2
   m_EditorClassIdentifier: 
   stateGameObject: {fileID: 0}
-  stateTransitions: []
-  abilityListObj: {fileID: 0}
+  stateTransitions:
+  - decisionToBeMade: {fileID: 11400000, guid: 7b65eb1e3d0bc334f897da9f9e5b6f59, type: 2}
+    onDecisionTrueExitState: {fileID: 11400000, guid: cabc6f767558341479ee268835955635, type: 2}
+    onDecisionFalseExitState: {fileID: 0}
+  - decisionToBeMade: {fileID: 11400000, guid: 60841ce926a1410439a9d06625e291a6, type: 2}
+    onDecisionTrueExitState: {fileID: 11400000, guid: 273df07e7eb22b843a2a21d134999a56, type: 2}
+    onDecisionFalseExitState: {fileID: 0}
+  - decisionToBeMade: {fileID: 11400000, guid: 3ea7a4cc9f32ec244b8bd01cc9e84210, type: 2}
+    onDecisionTrueExitState: {fileID: 11400000, guid: 68877b47e4b21af40b288aaa516454c3, type: 2}
+    onDecisionFalseExitState: {fileID: 0}
+  - decisionToBeMade: {fileID: 11400000, guid: 17ac2c6da785d944f96529e0b4c62ad9, type: 2}
+    onDecisionTrueExitState: {fileID: 11400000, guid: ab5636ddf3aea534e8de3f641ed93043, type: 2}
+    onDecisionFalseExitState: {fileID: 11400000, guid: d11d68ce8ccf2f549b7b40bd9f32b47b, type: 2}
+  abilityListObj: {fileID: 11400000, guid: 2e2a81e2fc15bbe478c0caa04979619b, type: 2}
   usingAbilityNumber: 0

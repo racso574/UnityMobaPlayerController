@@ -25,7 +25,7 @@
                 },
                 {
                     "name": "Ability2",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "6b0f9e3c-21a7-4377-b83c-db734791f14e",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -34,7 +34,7 @@
                 },
                 {
                     "name": "Ability3",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "0d6f2725-966b-4d3b-af30-af88ca53805e",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -43,7 +43,7 @@
                 },
                 {
                     "name": "Ability4",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "ed3f6753-3a84-49b1-b211-847e54962e01",
                     "expectedControlType": "Button",
                     "processors": "",
