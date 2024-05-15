@@ -86,7 +86,6 @@ public class PlayerMoveState : States
             if (NavMesh.SamplePosition(targetPosition, out hit, 10.0f, NavMesh.AllAreas))
             {
                 navMeshAgent.SetDestination(hit.position);
-                Debug.LogWarning("La posición de destino estaba fuera del NavMesh. Moviendo al punto más cercano en la NavMesh.");
             }
             else
             {
