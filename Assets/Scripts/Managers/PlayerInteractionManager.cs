@@ -13,6 +13,12 @@ public class PlayerInteractionManager : MonoBehaviour
     [SerializeField] LayerMask movingLayer;
     [SerializeField] LayerMask enemyLayer;
 
+    public bool startMoving;
+
+    public Vector3 MovingTargetPosition;
+
+    public bool startAttacking;
+
 
     private void Start()
     {
@@ -30,8 +36,7 @@ public class PlayerInteractionManager : MonoBehaviour
             var target = GetMouseTargetDir();
             if (target is Vector3 targetPosition)
             {
-                // Handle movement or other actions with targetPosition
-               // Debug.Log($"Target Position: {targetPosition}");
+                startMoving = true;
             }
             else if (target is GameObject targetEnemy)
             {

@@ -716,12 +716,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e5b4637062b3649b0eb3bdb8a344da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPosition: {x: 0, y: 0, z: 0}
   movingLayer:
     serializedVersion: 2
     m_Bits: 64
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
 --- !u!1 &577197195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,7 +1289,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!135 &1767670049
 SphereCollider:
