@@ -38,12 +38,6 @@ public class PlayerMoveState : States
         navMeshAgent = stateGameObject.GetComponent<NavMeshAgent>();
     }
 
-    public new void OnEnterState()
-    {
-       Debug.Log("oensmoverse");
-       
-    }
-
     private void GetMovingPoint(){
         targetPosition = PlayerReferences.instance.GetMouseTargetDir();
         targetPosition.y = stateGameObject.transform.position.y;
@@ -53,12 +47,8 @@ public class PlayerMoveState : States
 
     public override void FixedUpdate()
     {
-         if (PlayerInputController.Instance.IsInteracting())
-        {
-            GetMovingPoint();
-            AdjustAgentVelocity();       
-        }
-        
+
+        targetPosition = PlayerInteractionManager.Instance.MovingTargetPosition;
         MovePlayer();
        
     }

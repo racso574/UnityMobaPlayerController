@@ -37,6 +37,7 @@ public class PlayerInteractionManager : MonoBehaviour
             if (target is Vector3 targetPosition)
             {
                 startMoving = true;
+                MovingTargetPosition = targetPosition;
             }
             else if (target is GameObject targetEnemy)
             {
