@@ -19,17 +19,6 @@ public class PlayerMoveState : States
     {
     }
 
-    public override States CheckTransitions()
-    {
-        States newGameState = null;
-        if (rigidBody.velocity == Vector3.zero)
-        {
-            newGameState = base.CheckTransitions();
-        }
-        
-        
-        return newGameState;
-    }
   
     public override void Start()
     {
