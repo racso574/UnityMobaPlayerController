@@ -8,7 +8,6 @@ public class PlayerInteractionManager : MonoBehaviour
 
     public static PlayerInteractionManager Instance;
 
-    public Vector3 targetPosition;
 
     [SerializeField] LayerMask movingLayer;
     [SerializeField] LayerMask enemyLayer;

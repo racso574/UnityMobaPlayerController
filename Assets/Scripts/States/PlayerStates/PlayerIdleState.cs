@@ -15,10 +15,11 @@ public class PlayerIdleState : States
     public override void Start(){
         rigidBody = stateGameObject.GetComponent<Rigidbody>();
         
+        
     }
     public override void Update()
     { 
-        Debug.Log("oensidle");
+        
     }
     public override void OnExitState()
     {

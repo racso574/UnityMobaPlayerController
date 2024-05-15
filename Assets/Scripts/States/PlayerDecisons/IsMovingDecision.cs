@@ -10,6 +10,7 @@ public class IsMovingDecision : Decision
         bool aux = false;
         if (PlayerInteractionManager.Instance.startMoving)
         {
+            //PlayerInteractionManager.Instance.startMoving = false;
             aux = true;
         }
         return aux;

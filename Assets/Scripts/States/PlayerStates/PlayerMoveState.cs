@@ -25,6 +25,8 @@ public class PlayerMoveState : States
         rigidBody = stateGameObject.GetComponent<Rigidbody>();
         rotateCharacter = stateGameObject.GetComponent<RotateCharacter>();
         navMeshAgent = stateGameObject.GetComponent<NavMeshAgent>();
+        
+        Debug.Log("startcositas");
     }
 
     private void GetMovingPoint(){
@@ -36,10 +38,8 @@ public class PlayerMoveState : States
 
     public override void FixedUpdate()
     {
-
         targetPosition = PlayerInteractionManager.Instance.MovingTargetPosition;
-        MovePlayer();
-       
+        MovePlayer(); 
     }
 
     private void AdjustAgentVelocity()
