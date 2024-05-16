@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f73b3ea6f2282fc40a97bbfa189c5e3d, type: 3}
-  m_Name: Player Move State
+  m_Script: {fileID: 11500000, guid: 40801cfda7b31f24f8c8e32a74938e78, type: 3}
+  m_Name: Player Basic Atack State
   m_EditorClassIdentifier: 
   stateGameObject: {fileID: 0}
   stateTransitions:
@@ -26,9 +26,13 @@ MonoBehaviour:
   - decisionToBeMade: {fileID: 11400000, guid: 3ea7a4cc9f32ec244b8bd01cc9e84210, type: 2}
     onDecisionTrueExitState: {fileID: 11400000, guid: 68877b47e4b21af40b288aaa516454c3, type: 2}
     onDecisionFalseExitState: {fileID: 0}
-  - decisionToBeMade: {fileID: 11400000, guid: 696352cfe2cd0364096c618b8781d029, type: 2}
-    onDecisionTrueExitState: {fileID: 11400000, guid: 7718857e2c7830f4f826de88dfbf80ed, type: 2}
-    onDecisionFalseExitState: {fileID: 0}
   - decisionToBeMade: {fileID: 11400000, guid: 17ac2c6da785d944f96529e0b4c62ad9, type: 2}
+    onDecisionTrueExitState: {fileID: 11400000, guid: ab5636ddf3aea534e8de3f641ed93043, type: 2}
+    onDecisionFalseExitState: {fileID: 0}
+  - decisionToBeMade: {fileID: 11400000, guid: dfe2796cfe005434a85ce7446da39f8a, type: 2}
+    onDecisionTrueExitState: {fileID: 11400000, guid: a89f01fd7ee10014688b973c85593465, type: 2}
+    onDecisionFalseExitState: {fileID: 0}
+  - decisionToBeMade: {fileID: 11400000, guid: 696352cfe2cd0364096c618b8781d029, type: 2}
     onDecisionTrueExitState: {fileID: 0}
     onDecisionFalseExitState: {fileID: 11400000, guid: d11d68ce8ccf2f549b7b40bd9f32b47b, type: 2}
+  attackRange: 2

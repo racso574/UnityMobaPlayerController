@@ -10,11 +10,15 @@ public class PlayerBasicAtackState : States
     {
     }
     public override void Start(){
-        Debug.Log("ataque piu");
+        
     }
     public override void FixedUpdate()
     {
-       
+       if (PlayerInteractionManager.Instance.GetTargetDistance(stateGameObject.transform,PlayerInteractionManager.Instance.targetEnemy) <= attackRange){
+        Debug.Log("attacando shes");
+       }else{
+        PlayerInteractionManager.Instance.playerAction = 3;
+       }
     }
     public override void Update(){
 
