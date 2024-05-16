@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "States/PlayerBasicAtackState")]
-public class PlayerBasicAtackState : States
+[CreateAssetMenu(menuName = "States/PlayerMoveToRange")]
+public class PlayerMoveToRange : States
 {
-    public float attackRange;
-    public PlayerBasicAtackState(GameObject stateGameObject) : base(stateGameObject)
+    public PlayerMoveToRange(GameObject stateGameObject) : base(stateGameObject)
     {
     }
     public override void Start(){
-        Debug.Log("ataque piu");
+        base.Start();
     }
     public override void FixedUpdate()
     {

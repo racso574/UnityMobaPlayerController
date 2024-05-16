@@ -40,17 +40,12 @@ public class PlayerMoveState : States
     {
         targetPosition = PlayerInteractionManager.Instance.MovingTargetPosition;
         MovePlayer(); 
+
+        if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance && !navMeshAgent.hasPath)
+        {
+            PlayerInteractionManager.Instance.playerAction = 0;
+        }
     }
-
-    private void AdjustAgentVelocity()
-    {
-        Vector3 direction = (targetPosition - stateGameObject.transform.position).normalized;
-        float currentSpeed = navMeshAgent.velocity.magnitude;
-
-        // Ajusta la velocidad del agente para moverse en la nueva dirección sin detenerse completamente
-        navMeshAgent.velocity = direction * currentSpeed;
-    }
-
     private void MovePlayer()
     {
         NavMeshHit hit;

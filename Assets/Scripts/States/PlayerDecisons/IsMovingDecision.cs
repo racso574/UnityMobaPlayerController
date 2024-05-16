@@ -8,9 +8,8 @@ public class IsMovingDecision : Decision
     public override bool Decide(StateMachine stateMachine)
     {
         bool aux = false;
-        if (PlayerInteractionManager.Instance.startMoving)
+        if (PlayerInteractionManager.Instance.playerAction == 1)
         {
-            //PlayerInteractionManager.Instance.startMoving = false;
             aux = true;
         }
         return aux;

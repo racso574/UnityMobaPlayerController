@@ -12,7 +12,7 @@ public class PlayerInteractionManager : MonoBehaviour
     [SerializeField] LayerMask movingLayer;
     [SerializeField] LayerMask enemyLayer;
 
-    public bool startMoving;
+    public int playerAction;
 
     public Vector3 MovingTargetPosition;
 
@@ -21,10 +21,9 @@ public class PlayerInteractionManager : MonoBehaviour
 
     private void Start()
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Debug.Log("Manager PlayerInteractionManager already exists");
+        if (Instance == null){Instance = this;}   
+        else{Debug.Log("Manager PlayerInteractionManager already exists");}
+        playerAction = 0;
 
     }
 
@@ -35,7 +34,7 @@ public class PlayerInteractionManager : MonoBehaviour
             var target = GetMouseTargetDir();
             if (target is Vector3 targetPosition)
             {
-                startMoving = true;
+                playerAction = 1;
                 MovingTargetPosition = targetPosition;
             }
             else if (target is GameObject targetEnemy)
