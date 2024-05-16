@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "States/PlayerBasicAtackState")]
-public class PlayerBasicAtackState : States
+public class PlayerBasicAtackState : AttackState
 {
     public float attackRange;
     public PlayerBasicAtackState(GameObject stateGameObject) : base(stateGameObject)

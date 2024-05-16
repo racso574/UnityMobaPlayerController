@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Ability : ScriptableObject{
+public abstract class Ability : ScriptableObject
+{
     [SerializeField] protected float abilityRange;
     [SerializeField] protected float abilityBaseDamage;
     //[SerializeField] protected float abilityScaling;
@@ -12,7 +13,11 @@ public abstract class Ability : ScriptableObject{
     public abstract void OnEnterState(GameObject stateGameObject);
     public abstract void AbilityUpdate();
     public abstract void OnExitState();
-    
+
+    public float GetAbilityRange()
+    {
+        return abilityRange;
+    }
 
 
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Timeline;
 
 [CreateAssetMenu(menuName = "States/AbilityState4")]
-public class AbilityStateSlot4 : States
+public class AbilityStateSlot4 : AttackState
 {
     [SerializeField] private AbilityList abilityListObj;
     [SerializeField] private int usingAbilityNumber;
@@ -14,6 +14,11 @@ public class AbilityStateSlot4 : States
     private float statetimecount;
     public AbilityStateSlot4(GameObject stateGameObject) : base(stateGameObject)
     {
+    }
+
+    public override float GetAttackRange()
+    {
+        return abilityListObj.abilityList[usingAbilityNumber].GetAbilityRange();
     }
     public override States CheckTransitions()
     {

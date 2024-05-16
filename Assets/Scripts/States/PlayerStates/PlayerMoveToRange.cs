@@ -16,10 +16,6 @@ public class PlayerMoveToRange : States
     public override void FixedUpdate()
     {
         targetPosition = PlayerInteractionManager.Instance.targetEnemy.transform.position;
-       if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance && !navMeshAgent.hasPath)
-        {
-            PlayerInteractionManager.Instance.playerAction = 2;
-        }
         MovePlayer() ;
     }
 
