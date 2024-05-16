@@ -16,8 +16,6 @@ public class PlayerInteractionManager : MonoBehaviour
 
     public Vector3 MovingTargetPosition;
 
-    public bool startAttacking;
-
 
     private void Start()
     {
@@ -39,8 +37,8 @@ public class PlayerInteractionManager : MonoBehaviour
             }
             else if (target is GameObject targetEnemy)
             {
-                // Handle interaction with the enemy
-               // Debug.Log($"Target Enemy: {targetEnemy.name}");
+                playerAction = 2;
+                
             }
         }
     }
