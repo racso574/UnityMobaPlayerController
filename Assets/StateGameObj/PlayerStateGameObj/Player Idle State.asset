@@ -17,15 +17,6 @@ MonoBehaviour:
   - decisionToBeMade: {fileID: 11400000, guid: 7b65eb1e3d0bc334f897da9f9e5b6f59, type: 2}
     onDecisionTrueExitState: {fileID: 11400000, guid: cabc6f767558341479ee268835955635, type: 2}
     onDecisionFalseExitState: {fileID: 0}
-  - decisionToBeMade: {fileID: 11400000, guid: 9db824186f8579a49a999ab9016699e7, type: 2}
-    onDecisionTrueExitState: {fileID: 11400000, guid: 5af3802087fedb0439e3b945be4d6685, type: 2}
-    onDecisionFalseExitState: {fileID: 0}
-  - decisionToBeMade: {fileID: 11400000, guid: 60841ce926a1410439a9d06625e291a6, type: 2}
-    onDecisionTrueExitState: {fileID: 11400000, guid: 273df07e7eb22b843a2a21d134999a56, type: 2}
-    onDecisionFalseExitState: {fileID: 0}
-  - decisionToBeMade: {fileID: 11400000, guid: 3ea7a4cc9f32ec244b8bd01cc9e84210, type: 2}
-    onDecisionTrueExitState: {fileID: 11400000, guid: 68877b47e4b21af40b288aaa516454c3, type: 2}
-    onDecisionFalseExitState: {fileID: 0}
   - decisionToBeMade: {fileID: 11400000, guid: 17ac2c6da785d944f96529e0b4c62ad9, type: 2}
     onDecisionTrueExitState: {fileID: 11400000, guid: ab5636ddf3aea534e8de3f641ed93043, type: 2}
     onDecisionFalseExitState: {fileID: 0}
