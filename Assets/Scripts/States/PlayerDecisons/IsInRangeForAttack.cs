@@ -10,6 +10,6 @@ public class IsInRangeForAttack : Decision
     [SerializeField] AttackState attackState;
     public override bool Decide(StateMachine stateMachine)
     {
-        return PlayerInteractionManager.Instance.GetTargetDistance(stateMachine.transform, PlayerInteractionManager.Instance.targetEnemy) < attackState.GetAttackRange();
+        return PlayerInteractionManager.Instance.GetTargetDistance(stateMachine.transform.position, PlayerInteractionManager.Instance.targetEnemy.transform.position) < attackState.GetAttackRange();
     }
 }

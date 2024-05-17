@@ -7,43 +7,76 @@ using UnityEngine.AI;
 [CreateAssetMenu(menuName = "States/PlayerMoveState")]
 public class PlayerMoveState : States
 {
-    private Rigidbody rigidBody;
-    private RotateCharacter rotateCharacter;
-    private Vector3 targetPosition;
-    private UnityEngine.AI.NavMeshPath path;
-    private float elapsed = 0.0f;
+    private Rigidbody rb;
+    private RotateCharacter rc;
 
-    public float moveSpeed = 5f; // Custom movement speed
-    public float stoppingDistance = 0.5f; // Custom stopping distance
+    private Vector3 targetPosition;
+    private Vector3 newTargetPosition;
+
+    private UnityEngine.AI.NavMeshPath path;
+    private int pathIndex;
+
+    public float moveSpeed;// Custom movement speed
 
     public PlayerMoveState(GameObject stateGameObject) : base(stateGameObject)
     {
     }
 
-    public override void Start()
-    {
-        rigidBody = stateGameObject.GetComponent<Rigidbody>();
-        rotateCharacter = stateGameObject.GetComponent<RotateCharacter>();
-        path = new UnityEngine.AI.NavMeshPath();
-        elapsed = 0.0f;
+public override void Start()
+{
+    rb = stateGameObject.GetComponent<Rigidbody>();
+    rc = stateGameObject.GetComponent<RotateCharacter>();
+    path = new UnityEngine.AI.NavMeshPath();
+    targetPosition = PlayerInteractionManager.Instance.MovingTargetPosition;
+    CalculatePath();
+    pathIndex = 1;
+}
 
-      
+public override void FixedUpdate()
+{
+    newTargetPosition = PlayerInteractionManager.Instance.MovingTargetPosition;
+    if (targetPosition != newTargetPosition)
+    {
+        targetPosition = newTargetPosition;
+        CalculatePath();
+        pathIndex = 1;
     }
-    public override void FixedUpdate()
-    {
-        targetPosition = PlayerInteractionManager.Instance.MovingTargetPosition;
 
-       CalculatePath();
+    if (path.corners.Length > 1)
+    {
+        float distanceToNextPoint = PlayerInteractionManager.Instance.GetTargetDistance(stateGameObject.transform.position, path.corners[pathIndex]);
+
+        if (distanceToNextPoint < 0.92f)
+        {
+            if (pathIndex < path.corners.Length - 1)
+            {
+                pathIndex++;
+            }
+            else
+            {
+                // Hemos llegado al último punto
+                Debug.Log("Ya he llegado");
+                rb.velocity = Vector3.zero;
+                PlayerInteractionManager.Instance.playerAction = 0;
+                return; // Salir del método para evitar movimiento adicional
+            }
+        }
         
-       
-            
+        stateGameObject.transform.rotation = rc.RotateTowardsPoint(path.corners[pathIndex], stateGameObject.transform.position);
+        MovePlayer();
     }
+}
 
-
-    private void MovePlayer()
+private void MovePlayer()
+{
+    if (path.corners.Length > 1 && pathIndex < path.corners.Length)
     {
-       
+        Vector3 direction = (path.corners[pathIndex] - stateGameObject.transform.position).normalized;
+        Vector3 newPosition = stateGameObject.transform.position + direction * moveSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(newPosition);
     }
+}
+
 
     private void CalculatePath(){
             NavMeshHit hit;
@@ -71,13 +104,13 @@ public class PlayerMoveState : States
             }
         }
         
-        for (int i = 0; i < path.corners.Length - 1; i++)
-            Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
+        // for (int i = 0; i < path.corners.Length - 1; i++)
+        //     Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
 
-        for (int i = 0; i < path.corners.Length; i++)
-        {
-            Debug.Log("Corner " + i + ": " + path.corners[i]);
-        }
+        // for (int i = 0; i < path.corners.Length; i++)
+        // {
+        //     Debug.Log("Corner " + i + ": " + path.corners[i]);
+        // }
     }
 
 
@@ -89,7 +122,7 @@ public class PlayerMoveState : States
     public override void OnExitState()
     {
         base.OnExitState();
-        rigidBody.velocity = Vector3.zero; // Detener el movimiento cuando se sale del estado
+        rb.velocity = Vector3.zero; // Detener el movimiento cuando se sale del estado
     }
 }
 

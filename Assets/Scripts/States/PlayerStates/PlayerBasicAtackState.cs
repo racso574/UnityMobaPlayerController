@@ -14,7 +14,7 @@ public class PlayerBasicAtackState : AttackState
     }
     public override void FixedUpdate()
     {
-       if (PlayerInteractionManager.Instance.GetTargetDistance(stateGameObject.transform,PlayerInteractionManager.Instance.targetEnemy) <= attackRange){
+       if (PlayerInteractionManager.Instance.GetTargetDistance(stateGameObject.transform.position,PlayerInteractionManager.Instance.targetEnemy.transform.position) <= attackRange){
         Debug.Log("attacando shes");
        }else{
         PlayerInteractionManager.Instance.playerAction = 3;
