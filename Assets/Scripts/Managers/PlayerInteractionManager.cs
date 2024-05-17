@@ -18,12 +18,16 @@ public class PlayerInteractionManager : MonoBehaviour
 
     public GameObject targetEnemy;
 
+     public Transform target;
+    
 
     private void Start()
     {
         if (Instance == null){Instance = this;}   
         else{Debug.Log("Manager PlayerInteractionManager already exists");}
         playerAction = 0;
+
+        
 
     }
 
@@ -44,6 +48,8 @@ public class PlayerInteractionManager : MonoBehaviour
                 
             }
         }
+
+        
     }
 
     private object GetMouseTargetDir()

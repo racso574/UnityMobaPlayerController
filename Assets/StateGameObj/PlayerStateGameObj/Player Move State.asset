@@ -23,3 +23,5 @@ MonoBehaviour:
   - decisionToBeMade: {fileID: 11400000, guid: 17ac2c6da785d944f96529e0b4c62ad9, type: 2}
     onDecisionTrueExitState: {fileID: 0}
     onDecisionFalseExitState: {fileID: 11400000, guid: d11d68ce8ccf2f549b7b40bd9f32b47b, type: 2}
+  moveSpeed: 10
+  stoppingDistance: 0.2
